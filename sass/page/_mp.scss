@@ -1,0 +1,902 @@
+/////////////////////////////////////////////////////////以下為demo範例///
+// 2018-1005 全文檢索 table修正
+.gsc-above-wrapper-area{
+    margin-bottom: 0;
+    td { padding: 0 5px; border: 0; }
+}
+.gsc-refinementsArea{ border-bottom: 1px solid transparent;}
+
+
+.MP{
+    // background: url(../images/mp-bg.png) 50% top no-repeat;
+    // background-size: contain;
+    .section{
+        padding: 0 0 0;
+        .container{ padding: 1.25em 0 1.25em; }
+    }
+    .Side_Wrap{
+        .Side_Position{ padding-top: 20px; }
+    }
+}
+// 側邊按鈕的複雜定位
+.Side_Wrap{
+    position: relative;
+    width: 1320px;
+    margin: 0 auto;
+    .Side_Position{
+        position: fixed;
+        width: 1320px;
+        z-index: 97;
+        // padding-top: 20px;
+        #Side{
+            position: absolute;
+            right: 0;
+            width: 60px;
+            background: rgba(0,0,0,.75);
+            border-radius: 5px;
+            a{
+                display: block;
+                width: 60px;
+                height: 60px;
+                transition: background .3s ease;
+                text-align: center;
+                &:hover, &:focus{
+                    // background: $lightColor;
+                    background: darken($primaryColor, 30);
+                }
+                img{
+                    // width: 85%;
+                    // height: 85%;
+                }
+            }
+            a:first-child{
+                &:hover, &:focus{
+                    border-radius: 5px 5px 0 0;
+                }
+            }
+            a:last-child{
+                &:hover, &:focus{
+                    border-radius: 0 0 5px 5px;
+                }
+            }
+            a.GoLink{}
+            a.GoTel{ display: none;}
+        }
+    }
+    @media screen and (max-width: 1320px) {
+        width: 100%;
+        .Side_Position{ width: 100%; }
+    }
+    @media screen and (max-width: 768px) {
+        .Side_Position{
+            bottom: 370px;
+            #Side{
+                a.GoLink{ display: none; }
+                a.GoTel{ display: block;}
+            }
+        }
+    }
+}
+
+
+
+
+// 首頁區塊設定
+.section {
+    padding: 2em 0 2em;
+    // text-align: center;
+    [class^="col"] {
+        // border: 2px solid #FFF;
+        // background: #DEDEDE;
+        // min-height: 250px;
+        // color: $primaryColor;
+        // text-align: center;
+        // line-height: 250px;
+        // font-size: 1.5em;
+        // font-weight: bold;
+        @include box-sizing();
+    }
+    &+.section {
+        // padding-top: 2em;
+    }
+    h2{
+        text-align: center;
+        font-size: 2.2em;
+        padding: 0 1.5em;
+    }
+}
+
+// section 的背景
+.Bg_White{
+    // background-color: $primaryColor;
+    .container{
+        background-image: url('../images/Mp_Deco_color.png');
+        background-position: left top;
+        background-repeat: no-repeat;
+    }
+}
+.Bg_Color{
+    background-color: $primaryColor;
+    .container{
+        background-image: url('../images/Mp_Deco_white.png');
+        background-position: left top;
+        background-repeat: no-repeat;
+        @include screen('mobile') {
+            background-position: 20px top;
+        }
+    }
+}
+
+// 可用class個別命名
+// .event {
+//     .news {
+//         @include make-xs-column(12);
+//         @include make-sm-column(8);
+//         @include make-md-column(8); //992px  width:100%
+//         @include make-lg-column(8); //1400px width:100%
+//         // @include gutter(); //gutter 代表左右要留白 
+//     }
+//     .video {
+//         @include make-xs-column(12);
+//         @include make-sm-column(4);
+//         @include make-md-column(4); //992px  width:100%
+//         @include make-lg-column(4); //1400px width:100%
+//         // @include gutter(); //gutter 代表左右要留白
+//     }
+//     &+.event {
+//         .container {
+//             @include gutter(); //gutter 代表左右要留白
+//         }
+//     }
+// }
+// 單欄
+.col-12 {
+    .container {
+        // max-width: 100%;
+        max-width: 1200px;
+    }
+    .col {
+        @include make-xs-column(12);
+        @include make-sm-column(12);
+        @include make-md-column(12); //992px  width:100%
+        @include make-lg-column(12); //1400px width:100%
+        @include gutter(); //gutter 代表左右要留白
+    }
+    // 稅務線上服務
+    .Tax_Online{
+        @include clearfix;
+        overflow: visible;
+        padding: 0 7em;
+        a{
+            @include make-xs-column(6);
+            @include make-sm-column(4);
+            @include make-md-column(3);
+            @include make-lg-column(3);
+            margin: .25em 0 .25em;
+            transform-origin: 50% 50%;
+            transform: scale(1,1);
+            transition: all .6s;
+            .Item{
+                width: 90%;
+                text-align: center;
+                height: 120px;
+                margin: 0 auto;
+                border-radius: 5px;
+                overflow: hidden;
+                img{ text-align: center;}
+            }
+            &:nth-child(8n+1) .Item{ background: #029671;}
+            &:nth-child(8n+2) .Item{ background: #03987b;}
+            &:nth-child(8n+3) .Item{ background: #058879;}
+            &:nth-child(8n+4) .Item{ background: #087677;}
+            &:nth-child(8n+5) .Item{ background: #0c778b;}
+            &:nth-child(8n+6) .Item{ background: #0b6475;}
+            &:nth-child(8n+7) .Item{ background: #0e5473;}
+            &:nth-child(8n+8) .Item{ background: #104971;}
+            p{
+                text-align: center;
+                margin-top: .5em;
+                font-size: 112.5%;
+            }
+            color: #333;
+            &:hover, &:focus{
+                transform: scale(1.1,1.1);
+                .Item{
+                    p{ color: #fff;}
+                }
+            }
+        }
+        @include screen('mobile') {
+            padding: 0 2em;
+            a p{
+                min-height: 46px;
+            }
+        }
+        .Mobile{
+            display: none;
+            @include screen('mobile') { display: block; }
+        }
+    }
+}
+.News{
+    background: url(../images/mp-bg.png) 50% top no-repeat;
+    .slogen{ margin: 60px; }
+    .NewsList{
+        width: 980px;
+        margin: 0 auto;
+        // background: rgba(233,234,236,.9);
+        h3{
+            font-size: 150%;
+            margin: 10px 0;
+        }
+        ul{
+            list-style-type: none;
+            margin: 0;
+            background: rgba(233,234,236,.9);
+            padding: 30px;
+            li{
+                a{
+                    margin: .25em 0;
+                    display: block;
+                    padding: .5em 0;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    color: #555;
+                    border-bottom: dotted 1px #666;
+                    span.Date{
+                        font-size: .813em;
+                        font-weight: bold;
+                        margin-right: 1em;
+                    }
+                    &:focus, &:hover{
+                        color: $linkColor;
+                    }
+                }
+                &:last-child{
+                    a{ border-bottom: dotted 1px transparent; }
+                }
+            }
+        }
+        .btn_grp{
+            margin-top: -36px;
+            a.btn{
+                border: 1px solid transparent;
+                background: #2f6f96;
+                color: #fff;
+                font-weight: bold;
+                //-------------------hover.css----------------------------
+                display: inline-block;
+                vertical-align: middle;
+                -webkit-transform: perspective(1px) translateZ(0);
+                transform: perspective(1px) translateZ(0);
+                box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+                position: relative;
+                -webkit-transition-property: color;
+                transition-property: color;
+                -webkit-transition-duration: 0.3s;
+                transition-duration: 0.3s;
+                &:before{
+                    content: "";
+                    position: absolute;
+                    z-index: -1;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: darken($primaryColor, 30);
+                    -webkit-transform: scaleX(0);
+                    transform: scaleX(0);
+                    -webkit-transform-origin: 0 50%;
+                    transform-origin: 0 50%;
+                    -webkit-transition-property: transform;
+                    transition-property: transform;
+                    -webkit-transition-duration: 0.3s;
+                    transition-duration: 0.3s;
+                    -webkit-transition-timing-function: ease-out;
+                    transition-timing-function: ease-out;
+                }
+                &:hover, &:focus, &:active{ color: white; }
+                &:hover:before, &:focus:before, &:active:before{
+                    -webkit-transform: scaleX(1);
+                    transform: scaleX(1);
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 1000px) {
+        .slogen{
+            margin: 60px auto;
+            img{ width: auto;}
+        }
+        .NewsList{
+            width: 100%;
+            h3{ padding-left: 30px; }
+        }
+        
+    }
+    @media screen and (max-width: 450px) {
+        .slogen{
+            img{ width: 100%;}
+        }
+    }
+}
+
+// 雙欄 6-6
+.col-6 {
+    .container {
+        //@include gutter(); gutter 代表左右要留白
+    }
+    .Tax_AD {
+        @include make-xs-column(12);
+        @include make-sm-column(6); //768px  width:50%
+        @include make-md-column(6); //992px  width:50%
+        @include make-lg-column(6); //1400px width:50%
+        @include gutter();
+        a{
+            transform-origin: 50% 50%;
+            transform: scale(1, 1);
+            transition: all .6s;
+            &:hover{
+                transform: scale(1.2, 1.2);
+            }
+        }
+    }
+}
+// 雙欄 8-4
+.col-8-4 {
+    .news {
+        @include make-xs-column(12);
+        @include make-sm-column(8); //768px  width:66.6%
+        @include make-md-column(8); //992px  width:66.6%
+        @include make-lg-column(8); //1400px width:66.6%
+        @include gutter(); //gutter 代表左右要留白
+    }
+    .video {
+        @include make-xs-column(12);
+        @include make-sm-column(4); //768px  width:33.3%
+        @include make-md-column(4); //992px  width:33.3%
+        @include make-lg-column(4); //1400px width:33.3%
+    }
+}
+// 雙欄 3-9
+.col-3-9 {
+    padding: 0 0 0;
+    .Tax_Info {
+        @include make-xs-column(12);
+        @include make-sm-column(3); //768px  width:66.6%
+        @include make-md-column(3); //992px  width:66.6%
+        @include make-lg-column(3); //1400px width:66.6%
+        @include gutter();          //gutter 代表左右要留白
+        .imgOuter1-1{
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+    }
+    .Tax_News {
+        @include make-xs-column(12);
+        @include make-sm-column(9); //768px  width:33.3%
+        @include make-md-column(9); //992px  width:33.3%
+        @include make-lg-column(9); //1400px width:33.3%
+        .share{
+            float: right;
+            a{
+                display: block;
+                padding-top: 5px;
+                img{ width: 30px; height: 30px; }
+            }
+        }
+    }
+}
+// 三欄
+.news {
+    .container {
+        @include gutter(); //gutter 代表左右要留白
+    }
+    .col {
+        @include make-xs-column(12);
+        @include make-sm-column(4);
+        @include make-md-column(4); //992px  width:100%
+        @include make-lg-column(4); //1400px width:100%
+        @include gutter(); //gutter 代表左右要留白
+    }
+}
+// 三欄 4-4-4
+.col-4-4-4 {
+    .Video {
+        @include make-xs-column(12);
+        @include make-sm-column(4); //768px  width:33.3%
+        @include make-md-column(4); //992px  width:33.3%
+        @include make-lg-column(4); //1400px width:33.3%
+        @include gutter();
+        p{
+            font-size: 112.5%;
+            text-align: center;
+        }
+    }
+
+    .btn_grp{
+        a.btn{
+            border: 1px solid transparent;
+            background: #4b90ba;
+            color: #fff;
+            //-------------------hover.css----------------------------
+            display: inline-block;
+            vertical-align: middle;
+            -webkit-transform: perspective(1px) translateZ(0);
+            transform: perspective(1px) translateZ(0);
+            box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+            position: relative;
+            -webkit-transition-property: color;
+            transition-property: color;
+            -webkit-transition-duration: 0.3s;
+            transition-duration: 0.3s;
+            &:before{
+                content: "";
+                position: absolute;
+                z-index: -1;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: $lightColor;
+                -webkit-transform: scaleX(0);
+                transform: scaleX(0);
+                -webkit-transform-origin: 0 50%;
+                transform-origin: 0 50%;
+                -webkit-transition-property: transform;
+                transition-property: transform;
+                -webkit-transition-duration: 0.3s;
+                transition-duration: 0.3s;
+                -webkit-transition-timing-function: ease-out;
+                transition-timing-function: ease-out;
+            }
+            &:hover, &:focus, &:active{ color: white; }
+            &:hover:before, &:focus:before, &:active:before{
+                -webkit-transform: scaleX(1);
+                transform: scaleX(1);
+            }
+        }
+    }
+    .imgOuter {
+        @include aspect-ratio(4, 3);
+    }
+    .Youtube_Share{
+        position: absolute;
+        right: 15px;
+        top: 50px;
+        @media screen and (max-width: 1320px) { right: 80px; }
+        @media screen and (max-width: 576px) {
+            position: static;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+    }
+    // &+.col-3-3-3 {
+    //     background: $primaryColor;
+    // }
+}
+
+
+// // 進階設定，也可以自己寫
+// .col-1-2-1 {
+//     .col {
+//         @include make-xs-column(12);
+//         @include make-sm-column(3);
+//         @include make-md-column(3);
+//         @include make-lg-column(3);
+//         @include gutter(); //gutter 代表左右要留白
+//         min-height: 250px;
+//         &:nth-child(2) {
+//             @include make-xs-column(12);
+//             @include make-sm-column(6);
+//             @include make-md-column(6);
+//             @include make-lg-column(6);
+//         }
+//     }
+// }
+// // 四欄
+// .col-3 {
+//     .col {
+//         @include make-xs-column(12);
+//         @include make-sm-column(3); //768px  width:50%
+//         @include make-md-column(3); //992px  width:50%
+//         @include make-lg-column(3); //1400px width:50%
+//         @include gutter(); //gutter 代表左右要留白
+//     }
+// }
+
+// // 五欄
+// .col-5 {
+//     .col {
+//         @include make-xs-column(12);
+//         @include make-sm-column(2);
+//         @include make-md-column(2);
+//         @include make-lg-column(2);
+//         &:first-child {
+//             @include make-xs-column-offset(0);
+//             @include make-sm-column-offset(1);
+//             @include make-md-column-offset(1);
+//             @include make-lg-column-offset(1);
+//         }
+//     }
+// }
+
+
+//  -----------------------------------------------------
+
+// Youtub RWD -------------------------------------------
+.Video{
+    // margin: 1em 0;
+    margin-bottom: 50px;
+}
+.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; }
+.embed-container iframe,
+.embed-container object, 
+.embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+// Google map RWD
+.Gmap-rwd {
+    position: relative;
+    padding-bottom: 50%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+.Gmap-rwd iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+// 圖片比例 --------------------------------------------------
+.imgOuter1-1{
+    @include aspect-ratio(1,1);               //設定比例 1:1
+    img{ width: 100%; height: 100%; }
+}
+.imgOuter4-3{ @include aspect-ratio(3,4); }   //設定比例 3:4
+
+.imgOuter4-1{ @include aspect-ratio(4,1); }   //設定比例 4:1
+.imgOuter4-3{ @include aspect-ratio(4,3); }   //設定比例 4:3
+.imgOuter7-3{
+    @include aspect-ratio(7,3);               //設定比例 1:1
+    img{ width: 100%; height: 100%; }
+}
+.imgOuter16-9{ @include aspect-ratio(16,9); } //設定比例 16:9
+
+// Slider --------------------------------------------------
+.singleSlider {
+    width: 100%;
+    padding-bottom: 3em;
+    @include gutter(0);
+    .img-container {
+        // height: inherit;
+        height: 320px;
+        width: 100%;
+        position: relative;
+        img {
+            // width: 100%;
+            width: auto;
+            max-width: 100%;
+            height: 100%;
+            margin: 0 auto;
+        }
+        @include screen('mobile') {
+            // height: 280px;
+            width: 100%;
+        }
+    }
+    a {
+        display: block;
+        height: 100%;
+        width: 100%;
+        position: relative;
+        .caption {
+            position: absolute;
+            width: 100%;
+            height: 3em;
+            background: rgba(0, 0, 0, .45);
+            padding: 1em .5em .5em;
+            font-size: 112.5%;
+            color: #FFF;
+            margin: 0;
+            text-align: center;
+            bottom: 0;
+            left: 0;
+            @include text-overflow;
+            @include box-sizing;
+            @include screen('mobile') {
+                height: 2em;
+                width: 100%;
+                left: 0;
+                padding: .5em;
+            }
+        }
+    }
+    .slick-dots{
+        bottom: initial;
+        margin-top: .3em;
+    }
+    .slick-dots li.slick-active button:before{
+        background: #f98385;
+    }
+    .slick-dots li button:before {
+        background: #333;
+    }
+    @include screen('mobile') {
+        padding-bottom: 0;
+        .slick-prev { left: 0; top: 38%; }
+        .slick-next { right: 0; top: 38%; }
+    }
+}
+//節稅資訊
+.singleSlider_TaxReduce{
+    width: 100%;
+    padding-bottom: 3em;
+    @include gutter(0);
+    position: relative;
+    .img-container {
+        height: inherit;
+        width: 100%;
+        position: relative;
+        margin: 0 10px;
+        @include box-sizing;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+        @include screen('mobile') {
+            // height: 280px;
+            width: 100%;
+        }
+    }
+    a {
+        display: block;
+        height: 100%;
+        width: 100%;
+        position: relative;
+        .caption {
+            position: absolute;
+            width: 100%;
+            height: 3em;
+            background: rgba(0, 0, 0, .45);
+            padding: 1em .5em .5em;
+            font-size: 112.5%;
+            color: #FFF;
+            margin: 0;
+            text-align: center;
+            bottom: 0;
+            left: 0;
+            @include text-overflow;
+            @include box-sizing;
+            @include screen('mobile') {
+                height: 2em;
+                width: 100%;
+                left: 0;
+                padding: .5em;
+            }
+        }
+    }
+    .btn_grp{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: 1.8em 0;   
+        a.btn{
+            width: 180px;
+            display: inline-block;
+        }
+    }
+    .slick-dots{ bottom: initial; }
+    .slick-dots li.slick-active button:before{
+        background: #f98385;
+    }
+    .slick-dots li button:before {
+        // background: #fff;
+    }
+    @include screen('mobile') {
+       .btn_grp{
+            padding: .5em 0;
+            position: static; 
+            a.btn{
+                width: 100%;
+                line-height: 2.2;
+                margin-bottom: 3px;
+            }
+            .btn{ padding: 0 !important;}
+        } 
+    }
+}
+
+// .adSlider {
+//     padding-top: 2em;
+//     padding-bottom: 1.25em;
+//     @include gutter(70px);
+//     @include screen('mobile') {
+//         @include gutter();
+//     }
+//     .slick-prev {
+//         background: url(../vendor/slick/icon_arrow_left_inverse.png) no-repeat center center;
+//         background-size: 80%;
+//         left: 0;
+//         top: 55%;
+//     }
+//     .slick-next {
+//         background: url(../vendor/slick/icon_arrow_right_inverse.png) no-repeat center center;
+//         background-size: 80%;
+//         right: 0;
+//         top: 55%;
+//     }
+//     .img-container {
+//         width: 165px;
+//         height: 55px;
+//         margin: 0px 15px;
+//         a {
+//             display: block;
+//             text-align: center;
+//             img {
+//                 margin: 0 auto;
+//             }
+//         }
+//     }
+// }
+
+//write it in your sass setting
+.adSlider {
+    padding-top: 2em;
+    padding-bottom: 2em;
+    @include gutter(70px);
+    @include screen('mobile') {
+        @include gutter();
+    }
+    .slick-prev {
+        background: url(../vendor/slick/icon_arrow_left_inverse.png) no-repeat center center;
+        background-size: 80%;
+        left: -15px;
+        top: 50%;
+    }
+    .slick-next {
+        background: url(../vendor/slick/icon_arrow_right_inverse.png) no-repeat center center;
+        background-size: 80%;
+        right: -15px;
+        top: 50%;
+    }
+
+    .slick-prev,.slick-next{
+         &:focus {
+            &:before {
+                content:"";
+                position: absolute;
+                z-index: 9;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                bottom:0;
+                right: 0;
+                box-shadow: 0 0px 0px 3px $primaryColor inset;
+            }
+         }
+    }
+
+    .img-container {
+        width: 165px;
+        height: 55px;
+        margin: 0px 15px;
+        a {
+            display: block;
+            text-align: center;
+            img { margin: 0 auto; }
+            &:focus {
+                &:before {
+                    content:"";
+                    position: absolute;
+                    z-index: 9;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    bottom:0;
+                    right: 0;
+                    box-shadow: 0 0px 0px 3px $primaryColor inset;
+                }
+            }
+        }
+        
+    }
+}
+
+// 相關照
+.Multiple_slider{
+    margin-top: 1em;
+    margin-bottom: 2em;
+    .img-container {
+        height: inherit;
+        width: 100%;
+        position: relative;
+        margin: 0px 2px;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+        @include screen('mobile') {
+            // height: 280px;
+            width: 100%;
+        }
+    }
+
+    .slick-dots{
+        bottom: initial;
+    }
+    .slick-dots li.slick-active button:before{
+        background: #f98385;
+    }
+    .slick-dots li button:before {
+        background: #333;
+    }
+}
+
+// 影片
+.singleSlider-Video {
+    width: 100%;
+    @include gutter(0);
+    .img-container {
+        height: inherit;
+        width: 100%;
+        position: relative;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+        @include screen('mobile') {
+            // height: 280px;
+            width: 100%;
+        }
+    }
+    a {
+        display: block;
+        height: 100%;
+        width: 100%;
+        position: relative;
+        .caption {
+            position: absolute;
+            width: 100%;
+            height: 3em;
+            background: rgba(0, 0, 0, .45);
+            padding: 1em .5em .5em;
+            font-size: 112.5%;
+            color: #FFF;
+            margin: 0;
+            text-align: center;
+            bottom: 0;
+            left: 0;
+            @include text-overflow;
+            @include box-sizing;
+            @include screen('mobile') {
+                height: 2em;
+                width: 100%;
+                left: 0;
+                padding: .5em;
+            }
+        }
+    }
+    // .slick-dots{
+    //     bottom: initial;
+    //     margin: 1em 0 1em;
+    // }
+    // .slick-dots li.slick-active button:before{
+    //     background: #f98385;
+    // }
+    // .slick-dots li button:before {
+    //     background: #333;
+    // }
+}
+
+
+
+
