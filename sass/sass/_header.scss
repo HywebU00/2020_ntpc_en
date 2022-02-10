@@ -95,7 +95,7 @@
         height: 75px;
         margin: 0;
         margin-top: -30px;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
         padding: 0 1em;
         @include box-sizing;
         a {
@@ -218,7 +218,8 @@
     max-width: 80%;
     float: right;
     vertical-align: middle;
-    padding: 0em .3em 0em;
+    // padding: 0em .3em 0em;
+    padding: 0 0 0;
     margin: .75em 0;
     // 強制靠右
     position: absolute;
@@ -269,6 +270,24 @@
                 border: 1px solid lighten($form-focus, 20);
                 @include box-shadow(0px 0px 0px 2px lighten($form-focus, 20));
                 outline: none;
+            }
+
+            // 2022-0127 無障礙異動
+            margin-bottom: 0;
+            height: 40px;
+
+            text-indent: -9999px;
+            // position: relative;
+            &:before {
+                content: '';
+                position: absolute;
+                left: 16px;
+                top: 11px;
+                display: block;
+                width: 18px;
+                height: 18px;
+                background: url(../images/basic/icon_search.svg) no-repeat center center;
+                background-size: 100%;
             }
         }
     }
@@ -331,8 +350,8 @@
     }
     // 
     .form_inline{
-        // float: right;
-        float: left;
+        float: right;
+        // float: left;
     }
 
     // m_search
