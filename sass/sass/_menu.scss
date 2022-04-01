@@ -82,11 +82,17 @@
             li{
                 a{
                     color: #044847 !important;
+
+                    border: solid 1px transparent;
                     border-bottom: solid 1px #38b4b1;
+
                     margin: 15px 10px;
-                    font-size: 1.125em;
-                    &:hover, &:focus{
-                        outline:1px solid #38b4b1;
+                    &:hover{
+                        border: solid 1px #38b4b1;
+                    }
+                    &:focus{
+                        // outline:1px solid #38b4b1;
+                        border: solid 1px transparent;
                         border-bottom: solid 1px transparent;
                     }
                 }
