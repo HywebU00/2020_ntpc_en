@@ -244,14 +244,16 @@ $(function() {
 
         $(this).parent('.container').find('nav>ul>li>ul').stop(true, true).slideToggle(function() {
             if ($(this).is(':visible')) {
-                // $('.btn-fatfooter').html("收合");
-                $('.btn-fatfooter').attr('name', '收合選單');
+                $('.btn-fatfooter').html("<b>Close</b>");
+                $('.btn-fatfooter').attr('name', 'close');
+				$('.btn-fatfooter').attr('title', 'close');
                 $('.btn-fatfooter').removeClass('icon-down-open');
                 $('.btn-fatfooter').addClass('icon-up-open');
 
             } else {
-                // $('.btn-fatfooter').html("展開");
-                $('.btn-fatfooter').attr('name', '展開選單');
+                $('.btn-fatfooter').html("<b>Open</b>");
+                $('.btn-fatfooter').attr('name', 'open');
+				$('.btn-fatfooter').attr('title', 'open');
                 $('.btn-fatfooter').removeClass('icon-up-open');
                 $('.btn-fatfooter').addClass('icon-down-open');
             }
